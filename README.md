@@ -1,2 +1,2 @@
 # SpringCloudGateway_SpringSecurity
-webflux+formloging+jwt nacos+spring cloud gateway
+a demo for webflux+formloging+jwt nacos+spring cloud gateway
