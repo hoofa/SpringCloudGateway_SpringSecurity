@@ -1,0 +1,41 @@
+server:
+  port: 9998
+
+spring:
+  application:
+    name: iot-gateway
+  cloud:
+    nacos:
+      config:
+        enabled: false
+        server-addr: 192.168.1.236:8848
+        file-extension: yaml
+      discovery:
+        ip: 127.0.0.1
+        enabled: true
+        server-addr: 192.168.1.236:8848
+
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: test
+          uri: lb://iot-pre
+          predicates:
+            - Path=/iot/**
+          filters:
+            - StripPrefix=1
+
+        - id: test1
+          uri: http://www.baidu.com
+          predicates:
+            - Path=/baidu/**
+          filters:
+            - StripPrefix=1
+  thymeleaf:
+    cache: false
+
+
